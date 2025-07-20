@@ -1,8 +1,13 @@
+# Bỏ qua file môi trường và thư mục IDE
 .metadata/
+.classpath
+.project
+.settings/
+.factorypath
+
+# Bỏ qua build output
+target/
+
+# Bỏ qua file cấu hình riêng
 src/main/resources/application.properties
-# Giữ lại project chính
-!zosh-social-youtube/
-!zosh-social-react/
-!zosh-social-youtube/**
-!zosh-social-react/**
-src/main/resources/application.properties
+zosh-social-youtube/src/main/resources/application.properties
