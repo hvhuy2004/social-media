@@ -1,7 +1,8 @@
 .metadata/
-
+src/main/resources/application.properties
 # Giữ lại project chính
 !zosh-social-youtube/
 !zosh-social-react/
 !zosh-social-youtube/**
 !zosh-social-react/**
+src/main/resources/application.properties
