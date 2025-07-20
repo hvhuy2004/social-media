@@ -23,7 +23,8 @@ public class AppConfig {
 				.requestMatchers("/api/**").authenticated()
 				.anyRequest().permitAll())
 		.addFilterBefore(new jwtValidator(), BasicAuthenticationFilter.class)
-		.csrf(csrf-> csrf.disable());
+		.csrf(csrf-> csrf.disable())
+		;
 		
 		return http.build();
 	}

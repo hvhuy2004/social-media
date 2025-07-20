@@ -1,0 +1,7 @@
+.metadata/
+
+# Giữ lại project chính
+!zosh-social-youtube/
+!zosh-social-react/
+!zosh-social-youtube/**
+!zosh-social-react/**
