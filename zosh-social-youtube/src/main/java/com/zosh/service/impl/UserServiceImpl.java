@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import com.zosh.config.JwtProvider;
+import com.zosh.exceptions.UserException;
 import com.zosh.models.User;
 import com.zosh.repository.UserRepository;
 import com.zosh.service.UserService;
@@ -33,13 +34,13 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
-	public User findUserById(Integer userId) throws Exception {
+	public User findUserById(Integer userId) throws UserException {
 		Optional<User> user = userRepository.findById(userId);
 		
 		if (user.isPresent()) {
 			return user.get();
 		}
-		throw new Exception("user not exist with userid : " + userId);
+		throw new UserException("user not exist with userid : " + userId);
 	}
 
 	@Override
@@ -49,7 +50,7 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
-	public User followUser(Integer reqUserId, Integer userId2) throws Exception{
+	public User followUser(Integer reqUserId, Integer userId2) throws UserException{
 		User reqUser = findUserById(reqUserId);
 		User user2 = findUserById(userId2);
 		
@@ -62,7 +63,7 @@ public class UserServiceImpl implements UserService{
 	}
 	
 	@Override
-	public User unfollowUser(Integer userId1, Integer userId2) throws Exception {
+	public User unfollowUser(Integer userId1, Integer userId2) throws UserException {
 	    User user1 = findUserById(userId1); // người bỏ follow
 	    User user2 = findUserById(userId2); // người bị bỏ follow
 
@@ -76,11 +77,11 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
-	public User updateUser(User user, Integer userId) throws Exception {
+	public User updateUser(User user, Integer userId) throws UserException {
 		Optional<User> user1 = userRepository.findById(userId);
 		
 		if (user1.isEmpty()) {
-			throw new Exception("user not exist with id " + userId);
+			throw new UserException("user not exist with id " + userId);
 		}
 		
 		User oldUser = user1.get();
