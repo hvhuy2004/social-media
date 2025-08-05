@@ -115,5 +115,29 @@ public class UserServiceImpl implements UserService{
 		User user = userRepository.findByEmail(email);
 		return user;
 	}
+	
+	@Override
+    public User updateUserAvatar(Integer userId, String avatarUrl) throws UserException {
+        User user = findUserById(userId);
+        user.setAvatar(avatarUrl);
+        return userRepository.save(user);
+    }
+
+    @Override
+    public User updateUserProfile(Integer userId, String firstName, String lastName, String avatar) throws UserException {
+        User user = findUserById(userId);
+        
+        if (firstName != null) {
+            user.setFirstName(firstName);
+        }
+        if (lastName != null) {
+            user.setLastName(lastName);
+        }
+        if (avatar != null) {
+            user.setAvatar(avatar);
+        }
+        
+        return userRepository.save(user);
+    }
 
 }

@@ -22,4 +22,8 @@ public interface UserService {
 	public List<User> searchUser(String query);
 
 	public User findUserByJwt(String jwt);
+	
+	public User updateUserAvatar(Integer userId, String avatarUrl) throws UserException;
+    
+	public User updateUserProfile(Integer userId, String firstName, String lastName, String avatar) throws UserException;
 }

@@ -26,6 +26,8 @@ public class User {
     private String password;
 
     private String gender;
+    
+    private String avatar;
 
     // Người dùng này được những ai FOLLOW
     @ManyToMany
@@ -52,7 +54,7 @@ public class User {
     public User() {}
 
 
-    public User(Integer id, String firstName, String lastName, String email, String password, String gender,
+    public User(Integer id, String firstName, String lastName, String email, String password, String gender, String avatar,
 			List<User> followers, List<User> followings, List<Post> savedPost) {
 		super();
 		this.id = id;
@@ -141,5 +143,12 @@ public class User {
 		this.savedPost = savedPost;
 	}
     
+	public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
     
 }
